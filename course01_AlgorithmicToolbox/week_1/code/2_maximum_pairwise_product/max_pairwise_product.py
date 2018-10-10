@@ -12,7 +12,23 @@ def max_pairwise_product(numbers):
     return max_product
 
 
+def my_max_pairwise_product(numbers):
+    n = len(numbers)
+    first_max = 0
+    second_max = 0
+
+    for i in range(n):
+        if numbers[i] > second_max:
+            second_max = numbers[i]
+            if numbers[i] > first_max:
+                second_max = first_max
+                first_max = numbers[i]
+
+    return first_max * second_max
+
+
 if __name__ == '__main__':
     input_n = int(input())
     input_numbers = [int(x) for x in input().split()]
-    print(max_pairwise_product(input_numbers))
+    # print(max_pairwise_product(input_numbers))
+    print(my_max_pairwise_product(input_numbers))
